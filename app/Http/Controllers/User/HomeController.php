@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\User;
 
-use PDF;
 use DateTime;
 use App\Calls;
 use App\Status;
 use App\Sources;
 use Carbon\Carbon;
 use Prophecy\Call\Call;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -86,7 +85,7 @@ class HomeController extends Controller
         {
             return response()->json(['errors' => 'لا توجد بيانات']);
         }
-        $pdf = new PDF(['tempDir' => __DIR__ . '/']);
+        
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
         return $pdf->stream('data.pdf');
     }
