@@ -1,10 +1,5 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4 float-left" style="text-align: left !important">
-        <!-- Brand Logo -->
-        <a href="" class="brand-link">
-         
-          <span class="brand-text font-weight-light">Golden Home</span>
-        </a>
     
         <!-- Sidebar -->
         <div class="sidebar">

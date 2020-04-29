@@ -24,7 +24,7 @@
                                     </div>
                                     
                                     <div id="datepicker2" class="input-group date">
-                                        <input id="date" style="text-align: right" class="form-control" name="endDate" type="text" readonly />
+                                        <input id="date2" style="text-align: right" class="form-control" name="endDate" type="text" readonly />
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                         <label for="date" style="text-align: right" class="ml-2">: إلى</label>
                                     </div>
