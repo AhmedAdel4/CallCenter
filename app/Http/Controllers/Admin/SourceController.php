@@ -46,7 +46,7 @@ class SourceController extends Controller
         $source = new Sources;
         $source['name'] = $request['name'];
         $source->save();
-        return redirect(route('source.index'))->with('success','تم أضافة مصدر جديده');
+        return redirect(route('source.index'))->with('success','تم أضافة مصدر جديد');
     }
 
    

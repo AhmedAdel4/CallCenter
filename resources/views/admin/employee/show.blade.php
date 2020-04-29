@@ -52,15 +52,7 @@
           </tr>
         @endforeach
         </tbody>
-        <tfoot  style="text-align: center !important">
-        <tr>
-          <th>مسح</th>
-          <th>تعديل</th>
-          <th>رقم الهاتف</th>
-          <th>الأسم</th>
-          <th>#</th>
-        </tr>
-        </tfoot>
+        
       </table>
     </div>
     <!-- /.card-body -->
@@ -88,22 +80,22 @@
 <script>
   $(function () {
     $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": true,
-      "ordering": false,
-      "info": true,
-      "autoWidth": true,
-      "language": {
-        "paginate": {
-          "next": "التالى",
-          "previous": "السابق",
-          "emptyTable":"ddd",
-          "loadingRecords": "من فضلك انتظر - جارى التحميل...",
-        }
-      }
-                           
-    });
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "autoWidth": true,
+                "language": {
+                    "zeroRecords": "لا توجد بيانات",
+                    "search": "بحث",
+                    "loadingRecords": "من فضلك انتظر - جارى التحميل...",
+                    "paginate": {
+                        "next": "التالى",
+                        "previous": "السابق",
+                    }
+                }
+
+            });
   });
 </script>
 @endsection

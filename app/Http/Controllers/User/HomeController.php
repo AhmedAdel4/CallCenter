@@ -85,6 +85,7 @@ class HomeController extends Controller
         {
             return response()->json(['errors' => 'لا توجد بيانات']);
         }
+        
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
         return $pdf->stream('data.pdf');
     }
