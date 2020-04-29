@@ -26,7 +26,7 @@
        
         <input id="password" autocomplete = 'new-password' type="password"  class="fadeIn second @error('password') is-invalid @enderror" name="password"  placeholder="الرقم السرى">
        
-        <input type="submit" class="fadeIn third" value="تسجيل">
+        <input type="submit" style="cursor: pointer;" class="fadeIn third" value="تسجيل">
     </form>
 
   </div>

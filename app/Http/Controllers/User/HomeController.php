@@ -77,10 +77,14 @@ class HomeController extends Controller
 
     public function printPDF(Request $request)
     {
+        
         $dateS = $request['startDate'];
         $dateE = $request['endDate'];
         $results = Calls::whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->get();
-
+        if(count($results) == 0)
+        {
+            return response()->json(['errors' => 'لا توجد بيانات']);
+        }
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
         return $pdf->stream('data.pdf');
     }

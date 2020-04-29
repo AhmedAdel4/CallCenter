@@ -91,7 +91,7 @@
                     </table>
                 </div>
                 
-                <button class="btn btn-primary mt-2 mb-4" data-toggle="modal" data-target="#printReport"><i class="fas fa-print mr-1"></i>طباعة تقرير</button>
+                <button class="btn btn-primary mt-2 mb-4" id="printButton" data-toggle="modal" data-target="#printReport"><i class="fas fa-print mr-1"></i>طباعة تقرير</button>
                 
             </div>
             <!-- /.card-body -->

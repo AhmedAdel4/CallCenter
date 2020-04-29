@@ -49,7 +49,12 @@
             </td>
             <td><a class="btn btn-info"  href="{{ route('call.edit',$call->id) }}">تعديل<span class="glyphicon glyphicon-edit"></span></a></td>
             <th>{{ $call->employee->name }}</th>
+            @if ($call->status)
             <th>{{ $call->status->name }}</th>
+            @else
+            <th>لم يحدد</th>
+            @endif
+            
             <th>{{ $call->source->name }}</th>
             <th>{{ $call->details }}</th>
             <th>{{ $call->phone }}</th>
