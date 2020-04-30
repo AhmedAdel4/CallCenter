@@ -80,7 +80,7 @@ class HomeController extends Controller
         
         $dateS = $request['startDate'];
         $dateE = $request['endDate'];
-        $results = Calls::whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->get();
+        $results = Calls::whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->order_by('created_at', 'desc')->get();
         if(count($results) == 0)
         {
             return response()->json(['errors' => 'لا توجد بيانات']);
