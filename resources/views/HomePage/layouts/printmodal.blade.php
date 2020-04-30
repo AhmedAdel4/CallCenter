@@ -14,7 +14,7 @@
                     <div class="row" style="text-align: center">
                             <div class="m-auto">
 
-                                <form action="/print" id="printForm">
+                                <form action="/print" id="printForm" method="POST">
                                     @csrf 
 
                                     <div id="datepicker" class="input-group date" style="text-align: right">

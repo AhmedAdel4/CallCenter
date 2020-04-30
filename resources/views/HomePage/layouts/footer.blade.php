@@ -167,7 +167,7 @@
 
 </script>
 {{-- Print Script --}}
-<script>
+{{-- <script>
     $(document).ready(function(){
         
         $('#printButton').on('click' ,function(){
@@ -196,4 +196,4 @@
         });
     });
 
-</script>
+</script> --}}
