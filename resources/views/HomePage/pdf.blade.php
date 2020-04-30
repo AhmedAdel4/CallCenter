@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir=”rtl”>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,9 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
+
         body{
-            font-family: 'dejavu sans', sans-serif;
+            font-family: "XB Riyaz";
         }
         .title {
         font-size: 84px;
@@ -23,47 +24,45 @@
     }
     </style>
 </head>
-<body dir="rtl">
+<body dir=”rtl” >
     {{-- <img height="50px" width="50px" src="/New2014-LogoEnglish.jpg" alt=""> --}}
-    <div class="title m-b-md" style="color: #B3272D">
-        PACK & MOVE 
-     </div>
+    
 
      @if ($results)
      <div style="overflow-x:auto;">
         <table id="example2" class="table table-bordered table-hover">
             <thead align='center'>
-            <tr style="background-color: rgb(160, 156, 156); font-size: 20px">
+            <tr dir=”rtl” style="background-color: rgb(160, 156, 156); font-size: 20px">
+                <th dir=”rtl”>تاريخ الأضافة</th>
+                <th dir=”rtl”>الموظف المسؤل</th>
+                <th dir=”rtl”>المصدر</th>
+                <th dir=”rtl”>الحالة</th>
+                <th dir=”rtl”>التفاصيل</th>
+                <th dir=”rtl”>أسم العميل</th>
+                <th dir=”rtl”>رقم العميل</th>
                 <th>#</th>
-                <th>رقم العميل</th>
-                <th>أسم العميل</th>
-                <th>التفاصيل</th>
-                <th>الحالة</th>
-                <th>المصدر</th>
-                <th>الموظف المسؤل</th>
-                <th>تاريخ الأضافة</th>
             </tr>
             </thead>
             <tbody>
 
             @foreach ($results as $result)
             <tr align='center' style="font-size: 20px;">
-                <td align='center'>{{ $loop->index + 1 }}</td>
-                <td align='center'>{{ $result->phone }}</td>
-                @if ($result->name == null)
-                <td align='center'>لم يحدد</td>
-                @else
-                <td align='center'>{{ $result->name }}</td>
-                @endif
-                <td align='center'>{{ $result->details }}</td>
+                <td align='center'>{{ $result->created_at }}</td>
+                <td align='center'>{{ $result->employee->name }}</td>
+                <td align='center'>{{ $result->source->name }}</td>
                 @if ($result->status == null)
                 <td align='center'>لم يحدد</td>
                 @else
                 <td align='center'>{{ $result->status->name }}</td>
                 @endif
-                <td align='center'>{{ $result->source->name }}</td>
-                <td align='center'>{{ $result->employee->name }}</td>
-                <td align='center'>{{ $result->created_at }}</td>
+                <td align='center'>{{ $result->details }}</td>
+                @if ($result->name == null)
+                <td align='center'>لم يحدد</td>
+                @else
+                <td align='center'>{{ $result->name }}</td>
+                @endif
+                <td align='center'>{{ $result->phone }}</td>
+                <td align='center'>{{ $loop->index + 1 }}</td>
             </tr>
             @endforeach
 

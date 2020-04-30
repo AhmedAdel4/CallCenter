@@ -174,25 +174,26 @@
             $('#form_result-print').html('');    
         });
         $('#printForm').on('submit',function(e){
-        e.preventDefault();
-        $.ajax({
-            type: "get",
-            url: "/print",
-            data: $('#printForm').serialize(),
-            success: function(result){
-                var html = '';
-                if(result.errors)
-                {
-                    html = '<div>';
-                    
-                    html += '<p class="alert alert-danger alert-dismissible fade show" style="text-align: center">' + result.errors + '</p>';
-                    
-                    html += '</div>';
-                    $('#form_result-print').html(html);
-                }
-            },
+            $('#form_result-print').html('');
+            e.preventDefault();
+            $.ajax({
+                type: "get",
+                url: "/print",
+                data: $('#printForm').serialize(),
+                success: function(result){
+                    var html = '';
+                    if(result.errors)
+                    {
+                        html = '<div>';
+                        
+                        html += '<p class="alert alert-danger alert-dismissible fade show" style="text-align: center">' + result.errors + '</p>';
+                        
+                        html += '</div>';
+                        $('#form_result-print').html(html);
+                    }
+                },
+            });
         });
-    });
     });
 
 </script>

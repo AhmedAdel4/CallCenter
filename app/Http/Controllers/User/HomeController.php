@@ -8,7 +8,7 @@ use App\Status;
 use App\Sources;
 use Carbon\Carbon;
 use Prophecy\Call\Call;
-use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
