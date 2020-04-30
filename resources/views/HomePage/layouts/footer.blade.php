@@ -182,7 +182,7 @@
                 data: $('#printForm').serialize(),
                 success: function(result){
                     var html = '';
-                    if(result.errors)
+                    if(result)
                     {
                         html = '<div>';
                         

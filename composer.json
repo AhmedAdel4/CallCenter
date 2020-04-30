@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "niklasravnsborg/laravel-pdf": "^4.0",
+        "pdfanonymous/phpanonymous": "dev-master",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
