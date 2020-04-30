@@ -29,7 +29,7 @@
   @include('HomePage.layouts.updatemodal')
   @include('HomePage.layouts.printmodal')
 
-    <div class="content" style="padding-top: 70px">
+    <div class="content" style="padding-top: 100px">
         
         <div class="title m-b-md" style="color: #B3272D">
            PACK & MOVE 
