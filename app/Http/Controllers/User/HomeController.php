@@ -87,6 +87,6 @@ class HomeController extends Controller
         }
         
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
-        return $pdf->stream('data.pdf');
+        return $pdf->download('data.pdf');
     }
 }
