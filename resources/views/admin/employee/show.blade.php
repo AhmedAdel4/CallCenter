@@ -16,44 +16,48 @@
 
         <p style="text-align: center"><a  class='col-lg-offset-5 btn btn-success' href="{{ route('employee.create') }}"> <i class="fa fa-plus-circle"></i> أضف موظف</a></p>
 
-      <table id="example2" class="table table-bordered table-hover">
-        <thead  style="text-align: center !important">
-        <tr>
-          <th>مسح</th>
-          <th>تعديل</th>
-          <th>رقم الهاتف</th>
-          <th>الأسم</th>
-          <th>#</th>
-        </tr>
-        </thead>
-        <tbody>
-        
-          @foreach ($employees as $employee)
-          <tr  style="text-align: center !important">
-            <td>
-              <form id="delete-form-{{ $employee->id }}" method="post" action="{{ route('employee.destroy',$employee->id) }}" >
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}	
-              </form>
-              <a href="" class="btn btn-danger" onclick="
-              if(confirm('هل تريد حذف العنصر ؟'))
-                  {
-                    event.preventDefault();
-                    document.getElementById('delete-form-{{ $employee->id }}').submit();
-                  }
-                  else{
-                    event.preventDefault();
-                  }" ><span class="glyphicon glyphicon-trash"></span>حذف</a>
-            </td>
-            <td><a class="btn btn-info"  href="{{ route('employee.edit',$employee->id) }}">تعديل<span class="glyphicon glyphicon-edit"></span></a></td>
-            <th>{{ $employee->phone }}</th>
-            <th>{{ $employee->name }}</th>
-            <td>{{ $loop->index + 1 }}</td>
-          </tr>
-        @endforeach
-        </tbody>
-        
-      </table>
+        <div style="overflow-x:auto;">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead  style="text-align: center !important">
+            <tr>
+              <th>مسح</th>
+              <th>تعديل</th>
+              <th>البريد الألكترونى</th>
+              <th>رقم الهاتف</th>
+              <th>الأسم</th>
+              <th>#</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+              @foreach ($employees as $employee)
+              <tr  style="text-align: center !important">
+                <td>
+                  <form id="delete-form-{{ $employee->id }}" method="post" action="{{ route('employee.destroy',$employee->id) }}" >
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}	
+                  </form>
+                  <a href="" class="btn btn-danger" onclick="
+                  if(confirm('هل تريد حذف العنصر ؟'))
+                      {
+                        event.preventDefault();
+                        document.getElementById('delete-form-{{ $employee->id }}').submit();
+                      }
+                      else{
+                        event.preventDefault();
+                      }" ><span class="glyphicon glyphicon-trash"></span>حذف</a>
+                </td>
+                <td><a class="btn btn-info"  href="{{ route('employee.edit',$employee->id) }}">تعديل<span class="glyphicon glyphicon-edit"></span></a></td>
+                <th>{{ $employee->email }}</th>
+                <th>{{ $employee->phone }}</th>
+                <th>{{ $employee->name }}</th>
+                <td>{{ $loop->index + 1 }}</td>
+              </tr>
+            @endforeach
+            </tbody>
+            
+          </table>
+        </div>
     </div>
     <!-- /.card-body -->
   </div>

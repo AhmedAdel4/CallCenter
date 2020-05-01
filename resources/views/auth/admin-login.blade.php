@@ -25,6 +25,7 @@
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
+        @include('includes.messages')
             <p class="login-box-msg">قم بتسجيل الدخول</p>
   
             <form action="{{ route('admin.login.submit') }}" method="post">
