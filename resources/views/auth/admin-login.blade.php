@@ -31,30 +31,10 @@
             <form action="{{ route('admin.login.submit') }}" method="post">
               @csrf
               <div class="input-group mb-3">
-                <input type="text"  name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="User Email" required autocomplete="email" autofocus>
-                @error('email')
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <span class="fas fa-envelope"></span>
-                    </div>
-                  </div>
-                  <span style="text-align: right" class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
+                <input type="text" style="text-align: center"  name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="User Email"  autocomplete="email" autofocus>
             </div>
               <div class="input-group mb-3">
-                <input id="password" type="password" placeholder="Password"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"> 
-                @error('password')
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <span class="fas fa-lock"></span>
-                    </div>
-                  </div>
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span> 
-                @enderror
+                <input id="password" style="text-align: center" type="password" placeholder="Password"  class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password"> 
               </div>
               <div class="row">
                 <div class="col-12">
