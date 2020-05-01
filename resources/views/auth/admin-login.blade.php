@@ -25,11 +25,11 @@
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
-        @include('includes.messages')
-            <p class="login-box-msg">قم بتسجيل الدخول</p>
-  
-            <form action="{{ route('admin.login.submit') }}" method="post">
-              @csrf
+          <p class="login-box-msg">قم بتسجيل الدخول</p>
+          
+          <form action="{{ route('admin.login.submit') }}" method="post">
+            @csrf
+            @include('includes.messages')
               <div class="input-group mb-3">
                 <input type="text" style="text-align: center"  name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="User Email"  autocomplete="email" autofocus>
             </div>

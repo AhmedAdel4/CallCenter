@@ -25,7 +25,7 @@ class AdminLoginController extends Controller
     {
         $this->validate($request,[
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required',
         ]);
 
         if(Auth::guard('admin')->attempt(['email' => $request->email , 'password' => $request->password], false))
