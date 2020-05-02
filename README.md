@@ -22,5 +22,5 @@ To get a copy of the project up and running on your local machine for developmen
 
 
 
-* (https://laravel.com) - The web framework used
+* <a href="https://laravel.com">Laravel</a> - The web framework used
 
