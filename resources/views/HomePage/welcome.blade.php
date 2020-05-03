@@ -28,6 +28,8 @@
   @include('HomePage.layouts.addmodal')
   @include('HomePage.layouts.updatemodal')
   @include('HomePage.layouts.printmodal')
+  @include('HomePage.layouts.printbystatusmodal')
+  @include('HomePage.layouts.printbyempmodal')
 
     <div class="content" style="padding-top: 100px">
         
@@ -91,7 +93,9 @@
                     </table>
                 </div>
                 
-                <button class="btn btn-primary mt-2 mb-4" id="printButton" data-toggle="modal" data-target="#printReport"><i class="fas fa-print mr-1"></i>طباعة تقرير</button>
+                <button class="btn btn-primary mt-2 mb-4" id="printButton" data-toggle="modal" data-target="#printReport"><i class="fas fa-print mr-1"></i>تقرير بالتاريخ</button>
+                <button class="btn btn-warning mr-2 ml-2 mt-2 mb-4" id="printButton" data-toggle="modal" data-target="#printByEmpReport"><i class="fas fa-print mr-1"></i>تقرير للموظف</button>
+                <button class="btn btn-danger mt-2 mb-4" id="printButton" data-toggle="modal" data-target="#printByStatusReport"><i class="fas fa-print mr-1"></i>تقرير بالحالة</button>
                 
             </div>
             <!-- /.card-body -->

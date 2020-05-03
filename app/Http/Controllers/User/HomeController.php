@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use DateTime;
 use App\Calls;
+use App\Employees;
 use App\Status;
 use App\Sources;
 use Carbon\Carbon;
@@ -26,7 +27,8 @@ class HomeController extends Controller
         $calls = Calls::latest()->get();
         $statuses = Status::all();
         $sources = Sources::all();
-        return view('HomePage.welcome',['calls' => $calls,'sources' => $sources,'statuses' => $statuses]);
+        $employees = Employees::all();
+        return view('HomePage.welcome',['calls' => $calls,'sources' => $sources,'statuses' => $statuses , 'employees' => $employees]);
     }
     public function saveCall(Request $request)
     {
@@ -81,10 +83,43 @@ class HomeController extends Controller
         $dateS = $request['startDate'];
         $dateE = $request['endDate'];
         $results = Calls::whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();
-        if(count($results) == 0)
-        {
-            return response()->json(['errors' => 'لا توجد بيانات']);
-        }
+        // if(count($results) == 0)
+        // {
+        //     return response()->json(['errors' => 'لا توجد بيانات']);
+        // }
+        
+        $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
+        return $pdf->stream('data.pdf');
+    }
+    public function printByStatusPDF(Request $request)
+    {
+        $this->validate($request,[
+            'status' => 'required',
+        ]);
+        $dateS = $request['startDate'];
+        $dateE = $request['endDate'];
+        $results = Calls::where('status_id',$request->status)->whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();
+        // if(count($results) == 0)
+        // {
+        //     return response()->json(['errors' => 'لا توجد بيانات']);
+        // }
+        
+        $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
+        return $pdf->stream('data.pdf');
+    }
+
+    public function printByEmpPDF(Request $request)
+    {
+        $this->validate($request,[
+            'emp' => 'required',
+        ]);
+        $dateS = $request['startDate'];
+        $dateE = $request['endDate'];
+        $results = Calls::where('employee_id',$request->emp)->whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();
+        // if(count($results) == 0)
+        // {
+        //     return response()->json(['errors' => 'لا توجد بيانات']);
+        // }
         
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
         return $pdf->stream('data.pdf');

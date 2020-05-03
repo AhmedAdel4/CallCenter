@@ -10,6 +10,8 @@ Route::group(['namespace' => 'User'], function () {
     Route::post('/', 'HomeController@saveCall')->name('home');
     Route::post('/callUpdate/{id}', 'HomeController@updateCall');
     Route::post('/print', 'HomeController@printPDF');
+    Route::post('/printbystatus', 'HomeController@printByStatusPDF');
+    Route::post('/printbyemp', 'HomeController@printByEmpPDF');
 });
 
 Route::get('/admin','Auth\AdminLoginController@showLoginForm')->name('admin.login');
