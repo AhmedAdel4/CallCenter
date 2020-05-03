@@ -186,6 +186,7 @@
                 url: "/print",
                 data: $('#printForm').serialize(),
                 success: function(result){
+                    this.downloadFile(result);
                     var html = '';
                     if(result.errors)
                     {
