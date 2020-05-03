@@ -167,22 +167,27 @@
 
 </script>
 {{-- Print Script --}}
-{{-- <script>
+<script>
     $(document).ready(function(){
         
         $('#printButton').on('click' ,function(){
             $('#form_result-print').html('');    
         });
+        function downloadFile(response) {
+            var blob = new Blob([response], {type: 'application/pdf'})
+            var url = URL.createObjectURL(blob);
+            location.assign(url);
+        } 
         $('#printForm').on('submit',function(e){
             $('#form_result-print').html('');
             e.preventDefault();
             $.ajax({
-                type: "get",
+                type: "post",
                 url: "/print",
                 data: $('#printForm').serialize(),
                 success: function(result){
                     var html = '';
-                    if(result)
+                    if(result.errors != '')
                     {
                         html = '<div>';
                         
@@ -191,9 +196,14 @@
                         html += '</div>';
                         $('#form_result-print').html(html);
                     }
+                    else
+                    {
+                        this.downloadFile(result);
+                    }
+
                 },
             });
         });
     });
 
-</script> --}}
+</script>

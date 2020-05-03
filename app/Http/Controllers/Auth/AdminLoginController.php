@@ -7,9 +7,12 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
 
 class AdminLoginController extends Controller
 {
+    use AuthenticatesUsers;
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
@@ -33,7 +36,14 @@ class AdminLoginController extends Controller
             return redirect()->intended(route('call.index'));
         }
 
-        return redirect()->back()->withInput($request->only('email'));
+        return  $this->sendFailedLoginResponse($request);
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            'email' => [trans('auth.failed')],
+        ]);
     }
 
     public function logout()
