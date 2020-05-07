@@ -20,7 +20,7 @@ class CallController extends Controller
 
     public function index()
     {
-        $calls = Calls::all();
+        $calls = Calls::latest()->get();
         return view('admin.call.show', ['calls' => $calls]);
     }
 

@@ -57,7 +57,8 @@ class HomeController extends Controller
     }
     public function updateCall(Request $request , $id)
     {
-        $validator = Validator::make($request->all(), ['detail' => 'required',
+        $validator = Validator::make($request->all(), 
+        [
         'status' => 'required',
         'detail' => 'required',
         'cname' => 'required',]);
@@ -71,7 +72,6 @@ class HomeController extends Controller
         $call['details'] = $request['detail'];
         $status = Status::where('name',$request->status)->first();
         $call->status()->associate($status);
-        $call->employee()->associate(1);
         $call->save();
 
         return redirect(route('home'))->with('success','تم التعديل بنجاح');
@@ -83,13 +83,10 @@ class HomeController extends Controller
         $dateS = $request['startDate'];
         $dateE = $request['endDate'];
         $results = Calls::whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();
-        // if(count($results) == 0)
-        // {
-        //     return response()->json(['errors' => 'لا توجد بيانات']);
-        // }
+      
         
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
-        return $pdf->stream('data.pdf');
+        return $pdf->stream('Report.pdf');
     }
     public function printByStatusPDF(Request $request)
     {
@@ -98,14 +95,9 @@ class HomeController extends Controller
         ]);
         $dateS = $request['startDate'];
         $dateE = $request['endDate'];
-        $results = Calls::where('status_id',$request->status)->whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();
-        // if(count($results) == 0)
-        // {
-        //     return response()->json(['errors' => 'لا توجد بيانات']);
-        // }
-        
+        $results = Calls::where('status_id',$request->status)->whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();        
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
-        return $pdf->stream('data.pdf');
+        return $pdf->stream('Report.pdf');
     }
 
     public function printByEmpPDF(Request $request)
@@ -115,13 +107,8 @@ class HomeController extends Controller
         ]);
         $dateS = $request['startDate'];
         $dateE = $request['endDate'];
-        $results = Calls::where('employee_id',$request->emp)->whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();
-        // if(count($results) == 0)
-        // {
-        //     return response()->json(['errors' => 'لا توجد بيانات']);
-        // }
-        
+        $results = Calls::where('employee_id',$request->emp)->whereBetween('created_at', [$dateS." 00:00:00", $dateE." 23:59:59"])->latest()->get();        
         $pdf = PDF::loadView('HomePage.pdf', ['results' => $results]);
-        return $pdf->stream('data.pdf');
+        return $pdf->stream('Report.pdf');
     }
 }
